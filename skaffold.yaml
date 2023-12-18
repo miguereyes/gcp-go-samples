@@ -1,0 +1,11 @@
+apiVersion: skaffold/v3alpha1
+kind: Config
+metadata: 
+  name: gohelloworld
+profiles:
+- name: target-1
+  manifests:
+    rawYaml:
+    - service.yaml
+deploy:
+  cloudrun: {}

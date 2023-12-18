@@ -2,22 +2,22 @@ steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 
-           'us-central1-docker.pkg.dev/my-learning-project-359202/go-demo/gohelloworld:v1', '.']
+           'us-central1-docker.pkg.dev/my-learning-project-359202/go-demo/gohelloworld:v2', '.']
 
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/my-learning-project-359202/go-demo/gohelloworld:v1']
+    args: ['push', 'us-central1-docker.pkg.dev/my-learning-project-359202/go-demo/gohelloworld:v2']
 
   # Create release in Google Cloud Deploy
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     entrypoint: gcloud
     args:
       [
-        "deploy", "releases", "create", "rel-v3",
+        "deploy", "releases", "create", "rel-v4",
         "--delivery-pipeline", "godemo-pipeline",
         "--region", "us-central1",
         "--annotations", "commitId=v1",
-        "--images", "gohelloworld=us-central1-docker.pkg.dev/my-learning-project-359202/go-demo/gohelloworld:v1"
+        "--images", "gohelloworld=us-central1-docker.pkg.dev/my-learning-project-359202/go-demo/gohelloworld:v2"
       ]  
 images:
-  - us-central1-docker.pkg.dev/my-learning-project-359202/go-demo/gohelloworld:v1
+  - us-central1-docker.pkg.dev/my-learning-project-359202/go-demo/gohelloworld:v2

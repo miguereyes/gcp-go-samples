@@ -6,4 +6,4 @@ spec:
   template:
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/my-learning-project-359202/go-demo/gohelloworld:v1
+      - image: us-central1-docker.pkg.dev/my-learning-project-359202/go-demo/gohelloworld:v2
